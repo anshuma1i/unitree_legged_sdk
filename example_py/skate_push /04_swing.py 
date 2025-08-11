@@ -1,0 +1,101 @@
+#!/usr/bin/python
+#
+# 04_swing_side_locked.py
+#
+# • Records the *entire* robot posture during the first 10 cycles.
+# • Holds all 12 joints at those angles with moderate PD gains.
+# • Adds the push-style sinusoid on the hip-pitch & knee of
+#   front-right (FR) and rear-right (RR) only.
+#
+# Based on: example_position.py  + 03_swing_side.py 
+
+import sys, time, math, numpy as np
+sys.path.append('../lib/python/amd64')
+import robot_interface as sdk
+
+# ─────────── user-tunable swing parameters ────────────
+HIP_AMP    = 0.55          # rad  (fore–aft sweep ±)
+KNEE_GAIN  = 0.65          # knee_amp = KNEE_GAIN * HIP_AMP (opposite phase)
+FREQ_HZ    = 1.2           # cycles per second
+MOVE_KP    = 25            # PD for moving joints
+MOVE_KD    = 3
+HOLD_KP    = 30            # PD for locked joints
+HOLD_KD    = 1
+# ──────────────────────────────────────────────────────
+
+d = {f'{leg}_{j}': i
+     for i,(leg,j) in enumerate(
+         [(l,k) for l in ('FR','FL','RR','RL') for k in range(3)])}
+
+PosStopF = 1e9;   VelStopF = 16000.0
+LOWLEVEL = 0xff;  DT = 0.002
+
+# ready-pose centre (same as example_position)
+MID = np.array([0.0, 1.2, -2.0])          # [roll, pitch, knee]
+
+# joints that *swing* (hip-pitch & knee) while hip-rolls stay fixed
+SWING = ('FR_1','FR_2','RR_1','RR_2')     # indices handled dynamically
+HIP_ROLL_BIAS = -0.65                     # inward torque on FR_0 & RR_0
+
+udp  = sdk.UDP(LOWLEVEL, 8080, "192.168.123.10", 8007)
+safe = sdk.Safety(sdk.LeggedType.Go1)
+cmd, state = sdk.LowCmd(), sdk.LowState()
+udp.InitCmdData(cmd)
+
+qInit = np.zeros(12)    # recorded stand pose
+qDes  = np.zeros(12)    # target each loop
+motion = ramp_i = sin_i = 0
+ω = 2*math.pi*FREQ_HZ
+KNEE_AMP = KNEE_GAIN * HIP_AMP
+
+def lerp(a,b,r): r=max(0,min(1,r)); return a*(1-r)+b*r
+
+while True:
+    time.sleep(DT);  motion += 1
+    udp.Recv(); udp.GetRecv(state)
+
+    # Phase 1 – capture full standing posture (0-9)
+    if motion < 10:
+        for name,idx in d.items():
+            qInit[idx] = state.motorState[idx].q
+        qDes[:] = qInit                         # just mirror until ramp starts
+
+    # Phase 2 – glide entire robot to MID pose (10-399)
+    elif motion < 400:
+        ramp_i += 1; rate = ramp_i/200.0
+        for leg in ('FR','RR','FL','RL'):
+            for j in range(3):
+                idx = d[f'{leg}_{j}']
+                target = MID[j] if leg[1]=='R' else qInit[idx]  # optional: also center left side
+                qDes[idx] = lerp(qInit[idx], target, rate)
+
+    # Phase 3 – keep everything stiff except swing joints (≥400)
+    else:
+        sin_i += 1; t = DT*sin_i
+        hip  =  HIP_AMP  * math.sin(ω*t)
+        knee = -KNEE_AMP * math.sin(ω*t)
+
+        # default: hold at MID for all joints
+        qDes[:] = MID.repeat(4)
+
+        # overwrite only our four swing joints
+        qDes[d['FR_1']] = MID[1] + hip
+        qDes[d['FR_2']] = MID[2] + knee
+        qDes[d['RR_1']] = MID[1] + hip
+        qDes[d['RR_2']] = MID[2] + knee
+
+    # ── fill LowCmd for every joint ──
+    for name,idx in d.items():
+        moving = name in SWING
+        cmd.motorCmd[idx].q  = qDes[idx]
+        cmd.motorCmd[idx].dq = 0
+        cmd.motorCmd[idx].Kp = MOVE_KP if moving else HOLD_KP
+        cmd.motorCmd[idx].Kd = MOVE_KD if moving else HOLD_KD
+        cmd.motorCmd[idx].tau= 0
+
+    # small inward bias on the two hip-rolls (helps clear toes)
+    cmd.motorCmd[d['FR_0']].tau = HIP_ROLL_BIAS
+    cmd.motorCmd[d['RR_0']].tau = HIP_ROLL_BIAS
+
+    if motion > 10: safe.PowerProtect(cmd,state,1)
+    udp.SetSend(cmd); udp.Send()
