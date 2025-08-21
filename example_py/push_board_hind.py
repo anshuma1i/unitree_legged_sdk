@@ -1,0 +1,215 @@
+#!/usr/bin/python
+
+
+import sys, time, numpy as np, os, argparse
+sys.path.append('../lib/python/amd64')
+import robot_interface as sdk
+
+# ========================
+# NETWORK CONFIG & CONSTANTS
+# ========================
+LOWLEVEL   = 0xff
+LOCAL_PORT = 8080
+ROBOT_IP   = "192.168.123.10"
+ROBOT_PORT = 8007
+DT = 0.002
+
+# ---- Joint mapping ----
+order = [(L,k) for L in ('FR','FL','RR','RL') for k in range(3)]
+d = {f'{leg}_{j}': i for i,(leg,j) in enumerate(order)}
+HL_HIP, HR_HIP = d['RL_1'], d['RR_1']
+HL_KNEE, HR_KNEE = d['RL_2'], d['RR_2']
+
+# ----------------- helpers -----------------
+def s_curve(a: float) -> float:
+    a = max(0.0, min(1.0, a))
+    return 10*a**3 - 15*a**4 + 6*a**5
+
+def set_joint(cmd, idx, q, kp, kd, tau=0.0):
+    m = cmd.motorCmd[idx]
+    m.q, m.dq, m.tau = float(q), 0.0, float(tau)
+    m.Kp, m.Kd = float(kp), float(kd)
+
+def ramp_to_pose(udp, safe, cmd, state, target_pose, ramp_time, kp, kd):
+    start_pose = np.array([state.motorState[i].q for i in range(12)], dtype=float)
+    t0 = time.time()
+    while True:
+        loop = time.time()
+        udp.Recv(); udp.GetRecv(state)
+        a = s_curve((time.time() - t0) / ramp_time)
+        interp = (1 - a) * start_pose + a * target_pose
+        for i in range(12): set_joint(cmd, i, interp[i], kp, kd)
+        safe.PowerProtect(cmd, state, 1)
+        udp.SetSend(cmd); udp.Send()
+        if a >= 1.0: break
+        time.sleep(max(0.0, DT - (time.time() - loop)))
+
+def hold_pose(udp, safe, cmd, state, target_pose, hold_time, kp, kd):
+    t0 = time.time()
+    while True:
+        loop = time.time()
+        udp.Recv(); udp.GetRecv(state)
+        for i in range(12): set_joint(cmd, i, target_pose[i], kp, kd)
+        safe.PowerProtect(cmd, state, 1)
+        udp.SetSend(cmd); udp.Send()
+        if time.time() - t0 >= hold_time: break
+        time.sleep(max(0.0, DT - (time.time() - loop)))
+
+# ----------------- main -----------------
+def main():
+    # --- PARSE COMMAND LINE ARGUMENTS ---
+    parser = argparse.ArgumentParser(description='Run the Go1 skateboarding script with specified parameters.')
+    parser.add_argument('--tau_boost', type=float, default=10.0, help='Feed-forward torque in Nm for the push.')
+    parser.add_argument('--z_offset', type=float, default=0.25, help='Downward knee offset for pressure.')
+    parser.add_argument('--amp_push', type=float, default=0.55, help='Hip swing amplitude for the push.')
+    parser.add_argument('--push_ratio', type=float, default=0.75, help='Ratio of the swing cycle dedicated to pushing.')
+    parser.add_argument('--swing_time', type=float, default=0.75, help='Total duration of one swing cycle in seconds.')
+    args = parser.parse_args()
+    
+    # ========================
+    # PARAMETERS FROM ARGUMENTS
+    # ========================
+    TAU_BOOST     = args.tau_boost
+    Z_OFFSET_KNEE = args.z_offset
+    AMP_PUSH      = args.amp_push
+    PUSH_RATIO    = args.push_ratio
+    SWING_TIME    = args.swing_time
+    
+    # --- Other fixed parameters ---
+    AMP_REC       = 0.45 
+    SWING_COUNT   = 10
+    KP_PUSH_HIP   = 25.0
+    KNEE_GAIN     = 1.2
+    KP_HOLD_OTHER = 8.0
+    KD_HOLD_OTHER = 0.7
+    KP_REC_HIP    = 7.0
+    KNEE_TAU_S    = 0.06
+    RAMP_TIME_DEFAULT = 5.0
+    RAMP_TIME_GROUND  = 3.0
+    WAIT_BASE     = 5
+    WAIT_HIND     = 5
+
+    # --- Start of Robot Logic ---
+    if not os.path.exists("lie_base.npy") or not os.path.exists("lie_skate_hind.npy"):
+        print("✗ Required pose files not found. Run record scripts first.")
+        return
+
+    base_pose = np.load("lie_base.npy").astype(float)
+    hind_pose_recorded = np.load("lie_skate_hind.npy").astype(float)
+
+    pressurized_pose = hind_pose_recorded.copy()
+    pressurized_pose[HL_KNEE] += Z_OFFSET_KNEE
+    pressurized_pose[HR_KNEE] += Z_OFFSET_KNEE
+    
+    udp   = sdk.UDP(LOWLEVEL, LOCAL_PORT, ROBOT_IP, ROBOT_PORT)
+    safe  = sdk.Safety(sdk.LeggedType.Go1)
+    cmd   = sdk.LowCmd()
+    state = sdk.LowState()
+    udp.InitCmdData(cmd)
+
+    for _ in range(10): udp.Recv(); udp.GetRecv(state); time.sleep(0.005)
+
+    try:
+        # 1) Base pose
+        print("► Moving to lie_base pose…")
+        ramp_to_pose(udp, safe, cmd, state, base_pose, RAMP_TIME_DEFAULT, KP_HOLD_OTHER, KD_HOLD_OTHER)
+        print(f"✓ Holding lie_base for {WAIT_BASE}s.")
+        hold_pose(udp, safe, cmd, state, base_pose, WAIT_BASE, KP_HOLD_OTHER, KD_HOLD_OTHER)
+
+        # 2) Grounding Sequence
+        print("► Moving to recorded hind_pose to make contact…")
+        ramp_to_pose(udp, safe, cmd, state, hind_pose_recorded, RAMP_TIME_DEFAULT, KP_HOLD_OTHER, KD_HOLD_OTHER)
+        print(f"✓ Holding recorded pose for {WAIT_HIND}s.")
+        hold_pose(udp, safe, cmd, state, hind_pose_recorded, WAIT_HIND, KP_HOLD_OTHER, KD_HOLD_OTHER)
+
+        print(f"► Applying downward pressure over {RAMP_TIME_GROUND}s…")
+        ramp_to_pose(udp, safe, cmd, state, pressurized_pose, RAMP_TIME_GROUND, KP_HOLD_OTHER, KD_HOLD_OTHER)
+        print("✓ Pressure applied. Starting push cycles.")
+        
+        # 3) Push cycles with seamless transition
+        q_base_HL_hip, q_base_HR_hip = pressurized_pose[HL_HIP], pressurized_pose[HR_HIP]
+        q_base_HL_knee, q_base_HR_knee = pressurized_pose[HL_KNEE], pressurized_pose[HR_KNEE]
+        knee_hl_off, knee_hr_off = 0.0, 0.0
+        alpha_lpf = DT / max(1e-3, KNEE_TAU_S)
+
+        transition_started = False
+        transition_start_pose = np.zeros(12)
+        transition_start_time = 0.0
+        final_recovery_start_time = SWING_TIME * (SWING_COUNT - 1) + SWING_TIME * PUSH_RATIO
+        total_time = SWING_TIME * SWING_COUNT
+
+        t0 = time.time()
+        print(f"► Swinging with parameters: TAU={TAU_BOOST}, Z_OFF={Z_OFFSET_KNEE}, AMP={AMP_PUSH}, P_RATIO={PUSH_RATIO}, S_TIME={SWING_TIME}")
+
+        while True:
+            loop = time.time()
+            udp.Recv(); udp.GetRecv(state)
+            t = time.time() - t0
+
+            if t > total_time:
+                break
+
+            if not transition_started and t >= final_recovery_start_time:
+                print("► Catching final recovery stroke for seamless transition…")
+                transition_started = True
+                transition_start_time = t
+                transition_start_pose = np.array([state.motorState[i].q for i in range(12)])
+
+            if transition_started:
+                time_in_transition = t - transition_start_time
+                transition_duration = SWING_TIME * (1.0 - PUSH_RATIO)
+                alpha = s_curve(time_in_transition / max(1e-3, transition_duration))
+                final_pose = (1 - alpha) * transition_start_pose + alpha * base_pose
+                for i in range(12):
+                    set_joint(cmd, i, final_pose[i], KP_REC_HIP, KD_HOLD_OTHER)
+            else:
+                pose = pressurized_pose.copy()
+                phase = (t % SWING_TIME) / SWING_TIME
+                hip_tau = 0.0
+
+                if phase < PUSH_RATIO:
+                    ap = s_curve(phase / PUSH_RATIO)
+                    hip_off = AMP_PUSH * ap
+                    kp_hip  = KP_PUSH_HIP
+                    hip_tau = TAU_BOOST
+                else:
+                    ar = s_curve((phase - PUSH_RATIO) / (1.0 - PUSH_RATIO))
+                    hip_off = AMP_PUSH - (AMP_PUSH + AMP_REC) * ar
+                    kp_hip  = KP_REC_HIP
+
+                pose[HL_HIP] = max(q_base_HL_hip + hip_off, q_base_HL_hip)
+                pose[HR_HIP] = max(q_base_HR_hip + hip_off, q_base_HR_hip)
+                knee_target = -KNEE_GAIN * hip_off
+                knee_hl_off = (1 - alpha_lpf) * knee_hl_off + alpha_lpf * knee_target
+                knee_hr_off = (1 - alpha_lpf) * knee_hr_off + alpha_lpf * knee_target
+                pose[HL_KNEE] = q_base_HL_knee + knee_hl_off
+                pose[HR_KNEE] = q_base_HR_knee + knee_hr_off
+
+                for i in range(12):
+                    if i == HL_HIP or i == HR_HIP:
+                        set_joint(cmd, i, pose[i], kp_hip, KD_HOLD_OTHER, tau=hip_tau)
+                    else:
+                        set_joint(cmd, i, pose[i], KP_HOLD_OTHER, KD_HOLD_OTHER)
+
+            safe.PowerProtect(cmd, state, 1)
+            udp.SetSend(cmd); udp.Send()
+            time.sleep(max(0.0, DT - (time.time() - loop)))
+
+        print("✓ Push cycles and seamless transition complete. Holding cruising pose.")
+        # Cruise indefinitely
+        while True:
+            loop = time.time()
+            udp.Recv(); udp.GetRecv(state)
+            for i in range(12): set_joint(cmd, i, base_pose[i], KP_HOLD_OTHER, KD_HOLD_OTHER)
+            safe.PowerProtect(cmd, state, 1)
+            udp.SetSend(cmd); udp.Send()
+            time.sleep(max(0.0, DT - (time.time() - loop)))
+
+    except KeyboardInterrupt:
+        print("\nExiting, releasing joints…")
+        for i in range(12): set_joint(cmd, i, state.motorState[i].q, 0.0, 0.0)
+        udp.SetSend(cmd); udp.Send()
+        print("Done.")
+
+if __name__ == "__main__":
+    main()
