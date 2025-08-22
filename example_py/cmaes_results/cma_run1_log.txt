@@ -1,0 +1,1739 @@
+python3 optimize_skate_cmaes.py
+/home/apollo/.local/lib/python3.10/site-packages/cma/s.py:15: UserWarning: Could not import matplotlib.pyplot, therefore ``cma.plot()`` etc. is not available
+  _warnings.warn('Could not import matplotlib.pyplot, therefore'
+i No checkpoint found. Starting a new optimization run...
+/home/apollo/.local/lib/python3.10/site-packages/cma/evolution_strategy.py:1291: UserWarning: Sampling standard deviation i=1 at iteration 0 change by 0.19999800001 to stds[1]=0.1
+  warnings.warn("Sampling standard deviation i={0} at iteration {1}"
+/home/apollo/.local/lib/python3.10/site-packages/cma/evolution_strategy.py:1291: UserWarning: Sampling standard deviation i=2 at iteration 0 change by 0.26666133338666625 to stds[2]=0.13333333333333333
+  warnings.warn("Sampling standard deviation i={0} at iteration {1}"
+/home/apollo/.local/lib/python3.10/site-packages/cma/evolution_strategy.py:1291: UserWarning: Sampling standard deviation i=3 at iteration 0 change by 0.2666586667866655 to stds[3]=0.13333333333333333
+  warnings.warn("Sampling standard deviation i={0} at iteration {1}"
+(4_w,8)-aCMA-ES (mu_w=2.6,w_1=52%) in dimension 5 (seed=933235, Fri Aug 22 16:28:48 2025)
+Optimizer state: 0 evaluations completed so far.
+
+--- Starting Trial 1 of 50 (Generation 0, Candidate 1/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.5432
+  z_offset: 0.2471
+  amp_push: 0.4702
+  push_ratio: 0.6121
+  swing_time: 1.2290
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.543205752430358, Z_OFF=0.24711360001966964, AMP=0.4701732034128232, P_RATIO=0.6121168032801145, S_TIME=1.2289657457378032
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 218
+SUCCESS -> Distance: 218.00cm, Score: -218.00
+
+--- Starting Trial 2 of 50 (Generation 0, Candidate 2/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 10.3859
+  z_offset: 0.1611
+  amp_push: 0.6117
+  push_ratio: 0.8097
+  swing_time: 0.8775
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=10.385894065427697, Z_OFF=0.16109666184413302, AMP=0.6116735113505983, P_RATIO=0.8097292700277877, S_TIME=0.877527379078231
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 19
+SUCCESS -> Distance: 19.00cm, Score: -19.00
+
+--- Starting Trial 3 of 50 (Generation 0, Candidate 3/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.9789
+  z_offset: 0.2810
+  amp_push: 0.6003
+  push_ratio: 0.8999
+  swing_time: 1.7005
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.978943450998374, Z_OFF=0.2809883205154138, AMP=0.6002946595289199, P_RATIO=0.8999145385177427, S_TIME=1.7004565239614862
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 105
+SUCCESS -> Distance: 105.00cm, Score: -105.00
+
+--- Starting Trial 4 of 50 (Generation 0, Candidate 4/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 10.1039
+  z_offset: 0.3027
+  amp_push: 0.4063
+  push_ratio: 0.7974
+  swing_time: 0.7426
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=10.103936991563176, Z_OFF=0.3026526878030872, AMP=0.40633087028374304, P_RATIO=0.7974032081248884, S_TIME=0.7425728726612749
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 141
+SUCCESS -> Distance: 141.00cm, Score: -141.00
+
+--- Starting Trial 5 of 50 (Generation 0, Candidate 5/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 10.0897
+  z_offset: 0.2231
+  amp_push: 0.5304
+  push_ratio: 0.8573
+  swing_time: 0.6011
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=10.08965154458537, Z_OFF=0.22307109539768452, AMP=0.5304197628660543, P_RATIO=0.8573207775896049, S_TIME=0.6011361112498248
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 23
+SUCCESS -> Distance: 23.00cm, Score: -23.00
+
+--- Starting Trial 6 of 50 (Generation 0, Candidate 6/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 10.5408
+  z_offset: 0.1672
+  amp_push: 0.4404
+  push_ratio: 0.7949
+  swing_time: 0.6104
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=10.540794075585335, Z_OFF=0.1672025570359258, AMP=0.44043710599649344, P_RATIO=0.7948701347340313, S_TIME=0.610404966721019
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 68
+SUCCESS -> Distance: 68.00cm, Score: -68.00
+
+--- Starting Trial 7 of 50 (Generation 0, Candidate 7/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.5942
+  z_offset: 0.2820
+  amp_push: 0.6820
+  push_ratio: 0.6530
+  swing_time: 1.3915
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.594201274526455, Z_OFF=0.2820019992097449, AMP=0.681970785753564, P_RATIO=0.652989449492071, S_TIME=1.3915192880057219
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 255
+SUCCESS -> Distance: 255.00cm, Score: -255.00
+
+--- Starting Trial 8 of 50 (Generation 0, Candidate 8/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.3726
+  z_offset: 0.2531
+  amp_push: 0.7562
+  push_ratio: 0.8269
+  swing_time: 0.9137
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.372635366793732, Z_OFF=0.2530881657365801, AMP=0.7561556119372115, P_RATIO=0.8268537075273371, S_TIME=0.9137009905969345
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 126
+SUCCESS -> Distance: 126.00cm, Score: -126.00
+
+✓ Generation 1 complete. Progress saved to 'optimization_checkpoint_cma.pkl'. Safe to interrupt.
+Iterat #Fevals   function value  axis ratio  sigma  min&max std  t[m:s]
+    1      8 -2.550000000000000e+02 1.0e+00 4.75e-01  9e-02  5e-01 10:57.4
+
+--- Starting Trial 9 of 50 (Generation 1, Candidate 1/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.4902
+  z_offset: 0.3069
+  amp_push: 0.5551
+  push_ratio: 0.7434
+  swing_time: 1.5205
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.490164192698817, Z_OFF=0.30691942928494487, AMP=0.555130410725713, P_RATIO=0.7433667706706257, S_TIME=1.5204513481553819
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 173
+SUCCESS -> Distance: 173.00cm, Score: -173.00
+
+--- Starting Trial 10 of 50 (Generation 1, Candidate 2/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.4071
+  z_offset: 0.2469
+  amp_push: 0.5006
+  push_ratio: 0.7178
+  swing_time: 0.9174
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.407069054847868, Z_OFF=0.2469349239648828, AMP=0.5006154176108951, P_RATIO=0.7177735241293405, S_TIME=0.917400532674824
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 221
+SUCCESS -> Distance: 221.00cm, Score: -221.00
+
+--- Starting Trial 11 of 50 (Generation 1, Candidate 3/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.3667
+  z_offset: 0.2454
+  amp_push: 0.6889
+  push_ratio: 0.7902
+  swing_time: 0.5155
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.366738069308003, Z_OFF=0.24538054500828216, AMP=0.6888637784386902, P_RATIO=0.7902423290266423, S_TIME=0.5154875814595684
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 24
+SUCCESS -> Distance: 24.00cm, Score: -24.00
+
+--- Starting Trial 12 of 50 (Generation 1, Candidate 4/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.7806
+  z_offset: 0.2907
+  amp_push: 0.5884
+  push_ratio: 0.7634
+  swing_time: 0.6878
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.780560735432854, Z_OFF=0.29072567023643414, AMP=0.5884229206763291, P_RATIO=0.7634354024486695, S_TIME=0.6878010937617023
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 212
+SUCCESS -> Distance: 212.00cm, Score: -212.00
+
+--- Starting Trial 13 of 50 (Generation 1, Candidate 5/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.3139
+  z_offset: 0.1435
+  amp_push: 0.4754
+  push_ratio: 0.8499
+  swing_time: 1.2884
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.313941813732567, Z_OFF=0.1434565777422896, AMP=0.47539946722034426, P_RATIO=0.8498589944826864, S_TIME=1.2884140993662956
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 62
+SUCCESS -> Distance: 62.00cm, Score: -62.00
+
+--- Starting Trial 14 of 50 (Generation 1, Candidate 6/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.1382
+  z_offset: 0.1143
+  amp_push: 0.5887
+  push_ratio: 0.6263
+  swing_time: 1.0383
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.138189989223306, Z_OFF=0.1143495583913611, AMP=0.5886522502490011, P_RATIO=0.6263104738622286, S_TIME=1.0382591717968048
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 192
+SUCCESS -> Distance: 192.00cm, Score: -192.00
+
+--- Starting Trial 15 of 50 (Generation 1, Candidate 7/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 10.2749
+  z_offset: 0.1743
+  amp_push: 0.4012
+  push_ratio: 0.8861
+  swing_time: 1.9720
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=10.27491526612488, Z_OFF=0.17427615126064788, AMP=0.40119060554990965, P_RATIO=0.8861182490130053, S_TIME=1.9719811169968113
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 22
+SUCCESS -> Distance: 22.00cm, Score: -22.00
+
+--- Starting Trial 16 of 50 (Generation 1, Candidate 8/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.5995
+  z_offset: 0.2470
+  amp_push: 0.4010
+  push_ratio: 0.6163
+  swing_time: 0.7614
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.599505712624048, Z_OFF=0.24701936988815354, AMP=0.40099534716128443, P_RATIO=0.6162762581615675, S_TIME=0.7614274477930215
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 208
+SUCCESS -> Distance: 208.00cm, Score: -208.00
+
+✓ Generation 2 complete. Progress saved to 'optimization_checkpoint_cma.pkl'. Safe to interrupt.
+    2     16 -2.210000000000000e+02 1.2e+00 4.12e-01  8e-02  4e-01 24:23.6
+
+--- Starting Trial 17 of 50 (Generation 2, Candidate 1/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 10.2479
+  z_offset: 0.1204
+  amp_push: 0.4800
+  push_ratio: 0.6622
+  swing_time: 1.4147
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=10.247930079613676, Z_OFF=0.12041696898062029, AMP=0.47995963489600235, P_RATIO=0.6621690383285207, S_TIME=1.4147152578651259
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 45
+SUCCESS -> Distance: 45.00cm, Score: -45.00
+
+--- Starting Trial 18 of 50 (Generation 2, Candidate 2/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.7958
+  z_offset: 0.2042
+  amp_push: 0.4687
+  push_ratio: 0.5755
+  swing_time: 0.8812
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.7957760247182, Z_OFF=0.20421186116470819, AMP=0.4686955277000472, P_RATIO=0.5754604408537104, S_TIME=0.881213938203019
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 206
+SUCCESS -> Distance: 206.00cm, Score: -206.00
+
+--- Starting Trial 19 of 50 (Generation 2, Candidate 3/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.6254
+  z_offset: 0.2588
+  amp_push: 0.5011
+  push_ratio: 0.6412
+  swing_time: 0.6365
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.625421190403298, Z_OFF=0.25878447041792196, AMP=0.5010997382034398, P_RATIO=0.6412311837538761, S_TIME=0.6365243786461469
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 230
+SUCCESS -> Distance: 230.00cm, Score: -230.00
+
+--- Starting Trial 20 of 50 (Generation 2, Candidate 4/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.7228
+  z_offset: 0.2970
+  amp_push: 0.4305
+  push_ratio: 0.8811
+  swing_time: 1.0042
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.722795365663195, Z_OFF=0.29704120958928587, AMP=0.4305027962113215, P_RATIO=0.8810605443754508, S_TIME=1.004174700122151
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 118
+SUCCESS -> Distance: 118.00cm, Score: -118.00
+
+--- Starting Trial 21 of 50 (Generation 2, Candidate 5/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.7317
+  z_offset: 0.2763
+  amp_push: 0.4157
+  push_ratio: 0.6017
+  swing_time: 1.0288
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.731712677009948, Z_OFF=0.27625848126018154, AMP=0.4157357701411469, P_RATIO=0.6016776597792471, S_TIME=1.0288235637404304
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 205
+SUCCESS -> Distance: 205.00cm, Score: -205.00
+
+--- Starting Trial 22 of 50 (Generation 2, Candidate 6/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.3731
+  z_offset: 0.3114
+  amp_push: 0.5092
+  push_ratio: 0.5128
+  swing_time: 1.1451
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.373078623843291, Z_OFF=0.31144712507896816, AMP=0.5092179882501254, P_RATIO=0.5127664928430722, S_TIME=1.1450788388880988
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 224
+SUCCESS -> Distance: 224.00cm, Score: -224.00
+
+--- Starting Trial 23 of 50 (Generation 2, Candidate 7/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.4112
+  z_offset: 0.2921
+  amp_push: 0.4196
+  push_ratio: 0.8022
+  swing_time: 0.6420
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.411183638230714, Z_OFF=0.2921318353361065, AMP=0.4196055598251586, P_RATIO=0.8022118302336713, S_TIME=0.6420115360248728
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 132
+SUCCESS -> Distance: 132.00cm, Score: -132.00
+
+--- Starting Trial 24 of 50 (Generation 2, Candidate 8/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.5016
+  z_offset: 0.2013
+  amp_push: 0.5174
+  push_ratio: 0.7552
+  swing_time: 0.6314
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.50157033808016, Z_OFF=0.20129084258147, AMP=0.51736732699724, P_RATIO=0.7552198929158305, S_TIME=0.6314353255152584
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 190
+SUCCESS -> Distance: 190.00cm, Score: -190.00
+
+✓ Generation 3 complete. Progress saved to 'optimization_checkpoint_cma.pkl'. Safe to interrupt.
+    3     24 -2.300000000000000e+02 1.3e+00 3.93e-01  7e-02  4e-01 41:19.0
+
+--- Starting Trial 25 of 50 (Generation 3, Candidate 1/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.8781
+  z_offset: 0.2454
+  amp_push: 0.4064
+  push_ratio: 0.7632
+  swing_time: 0.9423
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.878127526191703, Z_OFF=0.24539273762915234, AMP=0.406429468051556, P_RATIO=0.7631587301378738, S_TIME=0.9423098649187099
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 190
+SUCCESS -> Distance: 190.00cm, Score: -190.00
+
+--- Starting Trial 26 of 50 (Generation 3, Candidate 2/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.7801
+  z_offset: 0.3183
+  amp_push: 0.5157
+  push_ratio: 0.5104
+  swing_time: 1.0269
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.780057428476242, Z_OFF=0.31833085310741077, AMP=0.5156764001557466, P_RATIO=0.5104077137142902, S_TIME=1.0269017252892145
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 210
+SUCCESS -> Distance: 210.00cm, Score: -210.00
+
+--- Starting Trial 27 of 50 (Generation 3, Candidate 3/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.4340
+  z_offset: 0.2625
+  amp_push: 0.5070
+  push_ratio: 0.6323
+  swing_time: 1.0129
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.433964807605111, Z_OFF=0.26248392906449525, AMP=0.5069806592455787, P_RATIO=0.6322804293232942, S_TIME=1.012897075922045
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 232
+SUCCESS -> Distance: 232.00cm, Score: -232.00
+
+--- Starting Trial 28 of 50 (Generation 3, Candidate 4/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.5228
+  z_offset: 0.2729
+  amp_push: 0.4005
+  push_ratio: 0.6430
+  swing_time: 1.1071
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.522789801649683, Z_OFF=0.2729166958194108, AMP=0.4005423911797895, P_RATIO=0.6430047972214997, S_TIME=1.1070640090467134
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 200
+SUCCESS -> Distance: 200.00cm, Score: -200.00
+
+--- Starting Trial 29 of 50 (Generation 3, Candidate 5/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.0748
+  z_offset: 0.1440
+  amp_push: 0.6439
+  push_ratio: 0.7673
+  swing_time: 0.8351
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.07482091360294, Z_OFF=0.143953254567801, AMP=0.6438547528453681, P_RATIO=0.7672585330053372, S_TIME=0.8350873300098542
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 43
+SUCCESS -> Distance: 43.00cm, Score: -43.00
+
+--- Starting Trial 30 of 50 (Generation 3, Candidate 6/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.2615
+  z_offset: 0.2301
+  amp_push: 0.4780
+  push_ratio: 0.5164
+  swing_time: 0.5818
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.261523585185598, Z_OFF=0.23007413927402415, AMP=0.477988023609457, P_RATIO=0.5163556589118636, S_TIME=0.5817735958266501
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 213
+SUCCESS -> Distance: 213.00cm, Score: -213.00
+
+--- Starting Trial 31 of 50 (Generation 3, Candidate 7/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.9639
+  z_offset: 0.3786
+  amp_push: 0.4963
+  push_ratio: 0.7578
+  swing_time: 0.6727
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.963937739209205, Z_OFF=0.3786329570163595, AMP=0.49631007211906686, P_RATIO=0.7578498773853749, S_TIME=0.6726711599417287
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 163
+SUCCESS -> Distance: 163.00cm, Score: -163.00
+
+--- Starting Trial 32 of 50 (Generation 3, Candidate 8/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.3534
+  z_offset: 0.3184
+  amp_push: 0.4945
+  push_ratio: 0.6644
+  swing_time: 1.3540
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.35340606534594, Z_OFF=0.3183896198595793, AMP=0.4945429366530884, P_RATIO=0.6644204239906724, S_TIME=1.3539640940018915
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 232
+SUCCESS -> Distance: 232.00cm, Score: -232.00
+
+✓ Generation 4 complete. Progress saved to 'optimization_checkpoint_cma.pkl'. Safe to interrupt.
+    4     32 -2.320000000000000e+02 1.4e+00 3.42e-01  6e-02  3e-01 53:41.0
+
+--- Starting Trial 33 of 50 (Generation 4, Candidate 1/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.2515
+  z_offset: 0.3826
+  amp_push: 0.6191
+  push_ratio: 0.6352
+  swing_time: 1.1519
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.251470993050404, Z_OFF=0.38262159785460537, AMP=0.6191274268435211, P_RATIO=0.6352307075588359, S_TIME=1.1518781235561633
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 252
+SUCCESS -> Distance: 252.00cm, Score: -252.00
+
+--- Starting Trial 34 of 50 (Generation 4, Candidate 2/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.0121
+  z_offset: 0.2513
+  amp_push: 0.4129
+  push_ratio: 0.5438
+  swing_time: 0.7572
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.012093040655465, Z_OFF=0.2513416239741627, AMP=0.41288136486079363, P_RATIO=0.5438194914943195, S_TIME=0.7571798028448795
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 196
+SUCCESS -> Distance: 196.00cm, Score: -196.00
+
+--- Starting Trial 35 of 50 (Generation 4, Candidate 3/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.7149
+  z_offset: 0.2655
+  amp_push: 0.5246
+  push_ratio: 0.5694
+  swing_time: 1.3064
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.714898331852543, Z_OFF=0.2655378031596631, AMP=0.5245531485393441, P_RATIO=0.5693554481534364, S_TIME=1.3063923625440286
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 238
+SUCCESS -> Distance: 238.00cm, Score: -238.00
+
+--- Starting Trial 36 of 50 (Generation 4, Candidate 4/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.5789
+  z_offset: 0.2575
+  amp_push: 0.5771
+  push_ratio: 0.5954
+  swing_time: 1.4864
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.578913237154195, Z_OFF=0.2574684086235941, AMP=0.5770994655071748, P_RATIO=0.5954286177275866, S_TIME=1.48644320758878
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 247
+SUCCESS -> Distance: 247.00cm, Score: -247.00
+
+--- Starting Trial 37 of 50 (Generation 4, Candidate 5/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.4266
+  z_offset: 0.2471
+  amp_push: 0.4924
+  push_ratio: 0.6395
+  swing_time: 0.8510
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.42660371032457, Z_OFF=0.24706214841883506, AMP=0.49235063546441193, P_RATIO=0.6395486770390313, S_TIME=0.8509621692865424
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 232
+SUCCESS -> Distance: 232.00cm, Score: -232.00
+
+--- Starting Trial 38 of 50 (Generation 4, Candidate 6/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.3917
+  z_offset: 0.2672
+  amp_push: 0.4948
+  push_ratio: 0.6403
+  swing_time: 0.6956
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.391680596636718, Z_OFF=0.2672340474211064, AMP=0.49475994949141544, P_RATIO=0.640272499825366, S_TIME=0.6955846963139822
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 235
+SUCCESS -> Distance: 235.00cm, Score: -235.00
+
+--- Starting Trial 39 of 50 (Generation 4, Candidate 7/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.4350
+  z_offset: 0.3130
+  amp_push: 0.6590
+  push_ratio: 0.5888
+  swing_time: 0.9767
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.43500156462122, Z_OFF=0.31302131111194265, AMP=0.6589950386798916, P_RATIO=0.5887920169997648, S_TIME=0.976731916319219
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 269
+SUCCESS -> Distance: 269.00cm, Score: -269.00
+
+--- Starting Trial 40 of 50 (Generation 4, Candidate 8/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.5985
+  z_offset: 0.3600
+  amp_push: 0.4309
+  push_ratio: 0.7914
+  swing_time: 1.4373
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.598476107155136, Z_OFF=0.36004342815896595, AMP=0.43087231954242144, P_RATIO=0.7913907037872212, S_TIME=1.437307877922449
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 145
+SUCCESS -> Distance: 145.00cm, Score: -145.00
+
+✓ Generation 5 complete. Progress saved to 'optimization_checkpoint_cma.pkl'. Safe to interrupt.
+    5     40 -2.690000000000000e+02 1.5e+00 3.62e-01  6e-02  3e-01 65:35.4
+
+--- Starting Trial 41 of 50 (Generation 5, Candidate 1/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.6881
+  z_offset: 0.3273
+  amp_push: 0.6498
+  push_ratio: 0.7663
+  swing_time: 0.9398
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.688124448449125, Z_OFF=0.3272648397920903, AMP=0.6498220354399298, P_RATIO=0.7663396736533862, S_TIME=0.9397567903199568
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 242
+SUCCESS -> Distance: 242.00cm, Score: -242.00
+
+--- Starting Trial 42 of 50 (Generation 5, Candidate 2/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.4821
+  z_offset: 0.3467
+  amp_push: 0.6375
+  push_ratio: 0.6709
+  swing_time: 1.1753
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.48208600002482, Z_OFF=0.34669226467078806, AMP=0.6375177535043107, P_RATIO=0.67094279360153, S_TIME=1.1753375421616417
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 255
+SUCCESS -> Distance: 255.00cm, Score: -255.00
+
+--- Starting Trial 43 of 50 (Generation 5, Candidate 3/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.6363
+  z_offset: 0.3299
+  amp_push: 0.5581
+  push_ratio: 0.5714
+  swing_time: 1.2039
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.63628592118284, Z_OFF=0.32991036433804133, AMP=0.5580590906862135, P_RATIO=0.5713952199578348, S_TIME=1.2038884700393986
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 248
+SUCCESS -> Distance: 248.00cm, Score: -248.00
+
+--- Starting Trial 44 of 50 (Generation 5, Candidate 4/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.3564
+  z_offset: 0.3116
+  amp_push: 0.6761
+  push_ratio: 0.5478
+  swing_time: 1.0787
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.356372390701788, Z_OFF=0.3116066074997506, AMP=0.6760753592524645, P_RATIO=0.5477949019332038, S_TIME=1.078702167435942
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 270
+SUCCESS -> Distance: 270.00cm, Score: -270.00
+
+--- Starting Trial 45 of 50 (Generation 5, Candidate 5/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.4853
+  z_offset: 0.3317
+  amp_push: 0.7193
+  push_ratio: 0.6283
+  swing_time: 0.7826
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.485339752805594, Z_OFF=0.3317244884268314, AMP=0.719295779945491, P_RATIO=0.6282597894634335, S_TIME=0.7825687644168722
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 286
+SUCCESS -> Distance: 286.00cm, Score: -286.00
+
+--- Starting Trial 46 of 50 (Generation 5, Candidate 6/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.8176
+  z_offset: 0.3670
+  amp_push: 0.7216
+  push_ratio: 0.5282
+  swing_time: 0.9935
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.81756211400514, Z_OFF=0.3669935772088144, AMP=0.7216097181741268, P_RATIO=0.5281673755591718, S_TIME=0.9935170226109268
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 263
+SUCCESS -> Distance: 263.00cm, Score: -263.00
+
+--- Starting Trial 47 of 50 (Generation 5, Candidate 7/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.2974
+  z_offset: 0.3557
+  amp_push: 0.6896
+  push_ratio: 0.6860
+  swing_time: 0.5083
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.297440409936756, Z_OFF=0.35572179342074794, AMP=0.6896029795555407, P_RATIO=0.6860035324714807, S_TIME=0.5083194684573982
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 218
+SUCCESS -> Distance: 218.00cm, Score: -218.00
+
+--- Starting Trial 48 of 50 (Generation 5, Candidate 8/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.4708
+  z_offset: 0.3673
+  amp_push: 0.7828
+  push_ratio: 0.6569
+  swing_time: 1.0912
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.4707753859992, Z_OFF=0.3673181164716369, AMP=0.7827572421070248, P_RATIO=0.6569199140957971, S_TIME=1.0911946507308523
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 284
+SUCCESS -> Distance: 284.00cm, Score: -284.00
+
+✓ Generation 6 complete. Progress saved to 'optimization_checkpoint_cma.pkl'. Safe to interrupt.
+    6     48 -2.860000000000000e+02 1.6e+00 4.01e-01  7e-02  4e-01 77:52.9
+
+--- Starting Trial 49 of 50 (Generation 6, Candidate 1/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.5943
+  z_offset: 0.3738
+  amp_push: 0.7107
+  push_ratio: 0.6958
+  swing_time: 0.5235
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.59430135603199, Z_OFF=0.37379434082060037, AMP=0.7107313065141201, P_RATIO=0.6957673697835949, S_TIME=0.5234961187334529
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 221
+SUCCESS -> Distance: 221.00cm, Score: -221.00
+
+--- Starting Trial 50 of 50 (Generation 6, Candidate 2/8) ---
+
+==================================================
+Parameters for this trial:
+  tau_boost: 9.1936
+  z_offset: 0.3059
+  amp_push: 0.7427
+  push_ratio: 0.5002
+  swing_time: 0.6989
+==================================================
+>>> Place the robot on the starting line and press Enter to begin the trial... 
+
+Running trial... Press Ctrl+C when the robot has stopped.
+UDP Initialized. socketfd: 3   Port: 8080
+► Moving to lie_base pose…
+✓ Holding lie_base for 5s.
+► Moving to recorded hind_pose to make contact…
+✓ Holding recorded pose for 5s.
+► Applying downward pressure over 3.0s…
+✓ Pressure applied. Starting push cycles.
+► Swinging with parameters: TAU=9.193556704131167, Z_OFF=0.30593988773111086, AMP=0.742659968761609, P_RATIO=0.5001525178271441, S_TIME=0.6989126745870068
+► Catching final recovery stroke for seamless transition…
+✓ Push cycles and seamless transition complete. Holding cruising pose.
+^C
+Exiting, releasing joints…
+Done.
+Closing UDP.
+End Safety.
+
+Trial concluded by user. Proceeding to score...
+Did the run complete successfully (y/n)?: (or type 'q' to quit): y
+Please enter the distance traveled in cm: 246
+SUCCESS -> Distance: 246.00cm, Score: -246.00
+
+Trial budget reached. Concluding this generation early.
+Traceback (most recent call last):
+  File "/home/apollo/unitree_legged_sdk/example_py/optimize_skate_cmaes.py", line 102, in <module>
+    es.tell(solutions[:len(scores)], scores)
+  File "/home/apollo/.local/lib/python3.10/site-packages/cma/evolution_strategy.py", line 2276, in tell
+    raise ValueError('population size ' + str(lam) +
+ValueError: population size 2 is too small with option CMA_mirrors * popsize < 0.5
