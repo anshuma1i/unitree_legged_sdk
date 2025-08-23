@@ -1,0 +1,16 @@
+How to Analyze Parameters
+
+This table is the foundation for the most important discussion in your results chapter. Here are the key insights you can now draw, which you should write about in the paragraphs following the table:
+
+Identify Common Patterns (Convergence):
+Point out that five out of the six champions (and especially the top performers) discovered that amp_push should be maximized (values are 0.80, 0.80, 0.80, 0.72, 0.79). This is a powerful finding.
+Thesis Statement: "A clear pattern emerged across both algorithms, indicating that maximizing the push-stroke length (amp_push) is a critical feature for achieving high performance in this task."
+
+Identify Different Strategies (Divergence):
+Compare the Bayesian Run 3 Champion to the others. It is a completely different strategy. While other champions used high force (tau_boost > 8.6) and fast swings (swing_time < 0.82), this champion used very low force (6.53) but the slowest possible swing time (2.0).
+Thesis Statement: "The results reveal two distinct successful strategies: a 'Force-Based' approach with high torque and fast motions, and a 'Momentum-Based' approach (discovered by Bayesian Run 3) that relies on a long, slow, deliberate push."
+
+Analyze Boundary Hitting (Critical Insight):
+This is a crucial point for your "Future Work" section. Point out that the single best-performing run (Bayesian Run 3) slammed three of its five parameters against the boundaries of the search space (amp_push at max, push_ratio at min, swing_time at max).
+Thesis Statement: "The fact that the top-performing gait pushed multiple parameters to their pre-defined limits strongly suggests that the true optimal solution may lie outside of the initial search space. Future experiments should explore an expanded range for swing_time and push_ratio."
+

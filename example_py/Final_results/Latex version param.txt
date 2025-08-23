@@ -1,0 +1,30 @@
+Latex version param 
+
+\usepackage{booktabs}
+
+
+\begin{table}[h!]
+\centering
+\caption{The six champion parameter sets discovered across all experimental runs. 
+For each run we report the single best Distance (cm) from the discovering trial and the Mean Distance (cm) from the re-runs. 
+Parameter ranges for the optimization were:
+$\tau_{\text{boost}} \in [5.0,15.0]$,
+$z_{\text{offset}} \in [0.1,0.4]$,
+$amp_{\text{push}} \in [0.4,0.8]$,
+$push_{\text{ratio}} \in [0.5,0.9]$, and
+$swing_{\text{time}} \in [0.5,2.0]$.}
+\label{tab:champion_params}
+\begin{tabular}{llrr|rrrrr}
+\toprule
+Algorithm & Source Run & \multicolumn{1}{c}{Trial No.} & \multicolumn{1}{c}{Distance (cm)} & \multicolumn{1}{c}{Mean Distance (cm)} & $\tau_{\text{boost}}$ & $z_{\text{offset}}$ & $amp_{\text{push}}$ & $push_{\text{ratio}}$ & $swing_{\text{time}}$ \\
+\midrule
+CMA-ES        & Run 1 & 45 & 286 & 286.8 & 9.49 & 0.33 & 0.72 & 0.63 & 0.78 \\
+CMA-ES        & Run 2 & 12 & 323 & 350.2 & 8.60 & 0.19 & 0.59 & 0.52 & 0.50 \\
+CMA-ES        & Run 3 & 37 & 367 & 395.0 & 8.98 & 0.27 & 0.79 & 0.50 & 0.52 \\
+Bayesian (BO) & Run 1 & 20 & 398 & 431.4 & 13.62 & 0.35 & 0.80 & 0.63 & 0.81 \\
+Bayesian (BO) & Run 2 & 34 & 383 & 442.2 & 10.21 & 0.25 & 0.80 & 0.56 & 0.63 \\
+Bayesian (BO) & Run 3 & 49 & 399 & 420.2 & 6.53 & 0.38 & 0.80 & 0.50 & 2.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
