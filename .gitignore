@@ -3,3 +3,5 @@ build
 *.o
 .vscode
 .clang-format
+# Ignore LibreOffice lock files
+.~lock.*#

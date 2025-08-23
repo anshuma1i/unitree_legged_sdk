@@ -1,0 +1,26 @@
+Best runs CMA
+
+1) #45
+python3 push_board_hind.py \
+  --tau_boost 9.485339752805594 \
+  --z_offset 0.3317244884268314 \
+  --amp_push 0.719295779945491 \
+  --push_ratio 0.6282597894634335 \
+  --swing_time 0.7825687644168722
+
+2) #12
+python3 push_board_hind.py \
+  --tau_boost 8.596279341346591 \
+  --z_offset 0.1857213131373814 \
+  --amp_push 0.5913990835181759 \
+  --push_ratio 0.518894240435649 \
+  --swing_time 0.5016757697277054
+
+3) #37
+python3 push_board_hind.py \
+  --tau_boost 8.984667044884997 \
+  --z_offset 0.2717081599662067 \
+  --amp_push 0.7900851518912241 \
+  --push_ratio 0.5040906874113585 \
+  --swing_time 0.5245649099257139
+
