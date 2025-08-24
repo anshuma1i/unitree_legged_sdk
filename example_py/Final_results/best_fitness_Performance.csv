@@ -1,0 +1,5 @@
+Gait / Method,Verified Mean Distance (cm),Verified Std. Dev. (cm),Improvement over Baseline (cm),Improvement over Baseline (%)
+Manual Baseline,217.0,7.58,-,-
+CMA-ES (Average of Champions),344.0,54.4,+127.0 cm,+58.5%
+Bayesian Opt. (Average of Champions),431.3,11.0,+214.3 cm,+98.7%
+"Grand Champion (Best BO Gait, 2nd Run)",442.2,7.22,+225.2 cm,+103.8%

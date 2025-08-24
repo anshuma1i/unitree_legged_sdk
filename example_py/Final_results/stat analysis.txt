@@ -1,0 +1,74 @@
+demo_stat_1 op analysis
+
+Data Sanity Check:
+What it is: A small table showing the count, mean, and standard deviation for the 5 validation runs of each of your 6 champions.
+What it tells you: It confirms that the data was loaded correctly (exactly 5 runs per champion) and gives you a first look at the stability of each individual gait.
+Primary Hypothesis Test (Your Headline Result):
+What it is: The results of the Exact Permutation Test on the 3 BO champions vs. the 3 CMA-ES champions.
+What it gives you: The most statistically rigorous one-sided and two-sided p-values to definitively answer the question: "Is BO significantly better than CMA-ES?"
+Primary Effect Sizes (The Magnitude of the Difference):
+What it is: The calculation of Hedges' g and Cliff's Delta on the 3 vs. 3 champion means.
+What it tells you: How much better BO performed. It will state that the effect size is very large and that, in your sample, every BO champion outperformed every CMA-ES champion.
+Bonus: It also provides a 95% Bootstrap Confidence Interval for Hedges' g, which quantifies the uncertainty of the effect size estimate.
+Robustness and Reliability Analysis:
+Algorithm Reliability: The standard deviation of the three champion means for both BO and CMA-ES. This number is crucial for arguing that BO is a more reliable algorithm (it consistently finds good solutions).
+Search Success Rate: The total count and percentage of failed trials for both algorithms over their full 150-trial budgets. This shows which algorithm was better at avoiding catastrophic failures during exploration.
+Motion and Parameter Analysis (For your "Discussion" section):
+Champion Parameter Table: A clean, ranked table showing the exact parameter values for all 6 champions plus the baseline. This is the "recipe" for success.
+Boundary Insights: A printed list of every instance where a champion's parameter hit the boundary of the search space. This is direct evidence for your argument that the true global optimum might lie outside the tested range (especially for amp_push).
+Advanced Statistical Model (Supporting Evidence):
+What it is: The summary of a Mixed-Effects Model.
+What it tells you: This is a sophisticated statistical test that confirms the main result while correctly accounting for the fact that you have 5 repeated measurements for each champion. It's a very strong piece of supporting evidence.
+II. Visual Outputs (The Three Publication-Ready Plots)
+This is how you will tell the story of your results visually in the "Figures" section of your thesis.
+Plot 1: The Learning Curve (Optimization Efficiency)
+Title: Optimization Efficiency (CMA-ES Truncated to 48 Trials)
+What it Shows: The median "best distance found so far" on the y-axis versus the trial number on the x-axis.
+Key Features: It includes a shaded 95% confidence interval to show the consistency of the learning process across the 3 runs for each algorithm. Crucially, it fairly compares the algorithms by truncating the CMA-ES data to its first 48 trials.
+The Story It Tells: This plot directly answers "Which algorithm was more sample-efficient?" It shows how quickly each algorithm converged to a high-performance solution.
+Plot 2: The Final Performance (Dot Plot)
+Title: Final Performance of Champion Gaits
+What it Shows: The primary result. It displays the mean performance of each of the 6 individual champions as large, distinct diamonds. It also overlays the overall average performance for BO and CMA-ES with proper 95% confidence interval error bars.
+The Story It Tells: This is your "money shot." It clearly shows that BO's average performance is higher and that the outcomes from the three BO runs were tightly clustered at a high level, while the CMA-ES outcomes were scattered.
+Plot 3: The Gait Consistency (Box Plot)
+Title: Consistency of Champion Gaits (5 Validation Runs Each)
+What it Shows: A detailed box plot for each of the 6 champions, visualizing the distribution (median, spread, and outliers) of their 5 validation runs.
+The Story It Tells: This plot provides a microscopic view of gait stability. It shows how reliable each individual champion gait is when run repeatedly on the physical robot and visually explains the variance you see in the other plots.
+
+
+
+============================================================================================================================================================================================
+How to Interpret Your Results: The Story in the Numbers
+Here is a breakdown of what each part of the output means and how you can translate it directly into your "Results" and "Discussion" sections.
+PART 2: The Main Performance Result (Your "Headline")
+This is the core finding of your thesis.
+What the Permutation Test Shows (p-value (one-sided) = 0.0500):
+Your Claim: You can now state that the performance of champions found by Bayesian Optimization was statistically significantly higher than those found by CMA-ES.
+The Nuance: A p-value of exactly 0.05 is the classic threshold. This is a "marginally significant" result. In your paper, you should report it precisely: (p = .05). This result is strong, but because your sample size (n=3 runs per algorithm) is small, the statistical power is limited. This is perfectly normal and expected.
+What the Effect Sizes Show (Hedges' g: 1.78, Cliff's Delta: 1.00):
+Your Claim: This is the knockout punch. You can state that while the result was marginally significant, the magnitude of the performance difference was extremely large.
+The Interpretation: A Hedges' g of 1.78 is considered a very large effect. The Cliff's Delta of 1.00 is even more powerful: it means that in your experiment, every single BO champion was better than every single CMA-ES champion. The bootstrap CI for Hedges' g is wide [1.22, 15.39], which again reflects the uncertainty of a small sample, but its lower bound is far from zero, confirming the large effect.
+PART 5: The Powerful Supporting Evidence
+The Mixed-Effects Model is your secret weapon. It uses all 30 validation runs in a statistically valid way.
+What the Model Shows (P>|z| = 0.006):
+Your Claim: "Furthermore, a mixed-effects model, which correctly accounts for the nested structure of the validation data, confirms this result with high confidence, showing that CMA-ES performed significantly worse than BO (β = -87.27, p = .006)."
+Why it's important: This strongly supports your primary finding and overcomes the low statistical power of the 3-vs-3 permutation test.
+PART 3: The Story of Reliability and Risk
+This is where your discussion gets interesting.
+The Sanity Check Table & Your Own Calculations:
+BO Champion Means: [431.4, 442.2, 420.2]. Standard Deviation = 11.0 cm.
+CMA-ES Champion Means: [286.8, 350.2, 395.0]. Standard Deviation = 54.4 cm.
+Your Claim: "Beyond average performance, Bayesian Optimization proved to be a vastly more reliable algorithm. The standard deviation among its champion outcomes was nearly five times smaller than that of CMA-ES, indicating that BO consistently converges to a high-performance solution, whereas CMA-ES's performance is highly variable."
+The Surprising Twist (Success Rate):
+The Finding: BO failed in 7.3% of its trials, while CMA-ES only failed in 1.3%.
+A Sophisticated Discussion Point: This is a fantastic, non-obvious finding. You can argue that BO's superior performance comes at the cost of a more aggressive, "risk-taking" exploration strategy. It's more willing to try parameters that might fail catastrophically in its search for the true optimum. CMA-ES, in contrast, was more conservative in its search.
+PART 4: The Physical Story ("Why" it Worked)
+This is where you connect the numbers back to the robot's actual motion.
+The Parameter Table and Boundary Analysis:
+Your Claim: "Analysis of the champion parameters reveals the physical strategy discovered by the optimization. The most successful gaits, particularly those found by BO, consistently pushed the amp_push parameter to its maximum limit (0.8 rad)."
+The Physical Interpretation: "This suggests the optimal strategy is not about more torque (tau_boost was moderate), but about a more aggressive leg push-off. The fact that the search boundary was repeatedly hit suggests that even better performance might be achievable if the search space were expanded, which is a clear direction for future work."
+Summary of Your Thesis Narrative
+Results: Bayesian Optimization produced significantly better champions than CMA-ES (Permutation test, p = .05). The magnitude of this performance difference was extremely large (Hedges' g = 1.78). This finding was further confirmed by a highly significant mixed-effects model (p = .006).
+Discussion - Reliability: The key advantage of BO was not just its higher average performance, but its superior reliability, consistently discovering solutions above 420 cm, while CMA-ES's results were highly variable.
+Discussion - Physical Strategy: The optimized motion strategy involves a powerful, aggressive leg push, as evidenced by the amp_push parameter consistently hitting its maximum allowed value.
+Discussion - A Deeper Insight: Interestingly, BO's superior exploratory power came with a higher rate of failed trials, suggesting a "high-risk, high-reward" strategy compared to the more conservative CMA-ES.

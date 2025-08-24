@@ -1,0 +1,7 @@
+Algorithm,Run,Trials_total,Successes_total,Success Rate_total
+BO,Run 1,50,46,0.92
+BO,Run 2,50,46,0.92
+BO,Run 3,50,47,0.94
+CMA-ES,Run 1,50,50,1
+CMA-ES,Run 2,50,49,0.98
+CMA-ES,Run 3,50,49,0.98

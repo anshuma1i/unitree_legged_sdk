@@ -1,0 +1,8 @@
+Algorithm,Source Run,Verified Mean Distance (cm),tau_boost (Nm),z_offset (rad),amp_push (rad),push_ratio,swing_time (s)
+Bayesian,Run 2,442.2,10.2,0.25,0.8,0.56,0.63
+Bayesian,Run 1,431.4,13.62,0.35,0.8,0.63,0.81
+Bayesian,Run 3,420.2,6.53,0.38,0.8,0.5,2.0
+CMA-ES,Run 3,395.0,8.98,0.27,0.79,0.5,0.52
+CMA-ES,Run 2,350.2,8.6,0.19,0.59,0.52,0.5
+CMA-ES,Run 1,286.8,9.49,0.33,0.72,0.63,0.78
+Baseline (Manual),Baseline,217.0,10.0,0.25,0.55,0.75,0.75
