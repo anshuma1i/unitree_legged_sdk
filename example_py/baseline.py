@@ -6,7 +6,7 @@ sys.path.append('../lib/python/amd64')
 import robot_interface as sdk
 
 # ========================
-# USER PARAMETERS (Your preferred tune)
+# USER PARAMETERS 
 # ========================
 # --- Force & Motion Tuning ---
 TAU_BOOST     = 10.0 # Feed-forward torque in Nm applied to the hips during the push.

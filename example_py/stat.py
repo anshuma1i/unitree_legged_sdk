@@ -1,5 +1,5 @@
 # ==============================================================================
-# DEFINITIVE THESIS ANALYSIS SCRIPT (Final, Runnable, Publication-Ready)
+# ANALYSIS SCRIPT 
 # ==============================================================================
 
 import warnings
@@ -269,7 +269,7 @@ else:
 # VISUALIZATION SUITE
 # ==============================================================================
 print("\n" + "=" * 80)
-print("GENERATING THE FINAL 5+1 PLOT VISUALIZATION SUITE")
+print("GENERATING THE FINAL PLOTS")
 print("=" * 80)
 
 # ---------- Plot 1: Learning Curves ----------
@@ -373,73 +373,85 @@ marker_handles = [
            markerfacecolor=PALETTE['Baseline'], markeredgecolor='white', markersize=12)
 ]
 g.fig.legend(handles=quant_handles + marker_handles, ncol=3, frameon=True,
-             loc='lower center', bbox_to_anchor=(0.5, 0.00))
+             loc='center left', bbox_to_anchor=(0.39, 0.86))
 plt.show()
 
 
 
-# --- Plot 3: Stability Boxplots (Hardware Robustness) ---
+# ==============================================================================
+# Plot 3 : Hardware Robustness of Champion Gaits
+# ==============================================================================
 
-# order champions left→right by mean performance (keeps your narrative)
-champion_order = (
-    df_validation.groupby(['Algorithm','Champion'])['Distance (cm)']
-    .mean().sort_values(ascending=False)
-    .index.get_level_values('Champion').unique()
-)
+# --- Create the figure with two subplots (facets) that share a y-axis ---
+fig, axes = plt.subplots(1, 2, figsize=(12, 8), sharey=True)
 
-# BIGGER/TALLER canvas + two side-by-side panels (same y-axis)
-fig, axes = plt.subplots(
-    1, 2, figsize=(20, 10), sharey=True,
-    gridspec_kw={'wspace': 0.08}  # small gap between panels
-)
+# --- Iterate over the two algorithms to create each facet ---
+for ax, algo in zip(axes, ['BO', 'CMA-ES']):
+    # Select the data for the current algorithm
+    sub_df = df_validation[df_validation['Algorithm'] == algo]
 
-for ax, algo, color in zip(
-    axes, ['BO', 'CMA-ES'], [PALETTE['BO'], PALETTE['CMA-ES']]
-):
-    sub = df_validation[df_validation['Algorithm'] == algo]
+    # --- FIX: Calculate the correct champion order FOR THIS ALGORITHM ---
+    # This is the key change. It ensures each panel has its own correct ordering.
+    algo_champion_order = (
+        sub_df.groupby('Champion')['Distance (cm)']
+        .mean().sort_values(ascending=False).index
+    )
+    # --------------------------------------------------------------------
 
-    # WIDE boxes (width=0.9), classic look, diamond outliers
+    # 1. Draw the box plots with the CORRECT order
     sns.boxplot(
-        data=sub, x='Champion', y='Distance (cm)', order=champion_order,
-        ax=ax, width=0.90, color=color, saturation=1.0,
-        fliersize=8,
-        flierprops={'marker': 'D', 'markeredgecolor': 'black',
-                    'markerfacecolor': 'white', 'alpha': 0.95}
+        data=sub_df, x='Champion', y='Distance (cm)',
+        order=algo_champion_order, # Use the algorithm-specific order
+        color=PALETTE[algo],
+        width=0.8,
+        linewidth=1.5,
+        fliersize=0,
+        ax=ax
     )
 
-    # overlay the 5 validation points per champion for readability
+    # 2. Overlay the raw data points with the CORRECT order
     sns.stripplot(
-        data=sub, x='Champion', y='Distance (cm)', order=champion_order,
-        ax=ax, dodge=False, jitter=0.05, size=7, alpha=0.9,
-        color=color, edgecolor='white', linewidth=0.6
+        data=sub_df, x='Champion', y='Distance (cm)',
+        order=algo_champion_order, # Use the algorithm-specific order
+        ax=ax,
+        jitter=0.1,
+        alpha=0.9,
+        size=8,
+        color=PALETTE[algo],
+        edgecolor='black',
+        linewidth=0.6
     )
 
-    # baseline reference
+    # 3. Manually plot outliers with the CORRECT order
+    for i, champion_id in enumerate(algo_champion_order):
+        # ... [rest of the outlier code is correct and remains the same] ...
+        vals = sub_df.loc[sub_df['Champion'] == champion_id, 'Distance (cm)'].values
+        if len(vals) < 5: continue
+        q1, q3 = np.percentile(vals, [25, 75])
+        iqr = q3 - q1
+        lower_bound = q1 - 1.5 * iqr
+        upper_bound = q3 + 1.5 * iqr
+        for v in vals:
+            if v < lower_bound or v > upper_bound:
+                ax.scatter(i, v, marker='D', s=80, color='black', edgecolor='white', zorder=10)
+
+    # 4. Add the baseline reference line
     ax.axhline(217.0, color=PALETTE['Baseline'], linestyle='--', linewidth=2)
 
-    # cosmetics
-    ax.set_title(algo, fontsize=20, weight='bold')
-    ax.set_xlabel('Champion', fontsize=14)
-    ax.tick_params(axis='x', labelsize=13)
-    ax.grid(True, axis='y', linestyle='--', alpha=0.3)
+    # 5. Set titles and labels
+    ax.set_title(algo, fontsize=18)
+    ax.set_xlabel('Champion ID (Ordered by Mean)', fontsize=14)
+    ax.set_ylabel('Verified Distance (cm)' if algo == 'BO' else '', fontsize=16)
+    ax.grid(alpha=0.5, linestyle='--')
 
-# shared y label and comfortable y-lims
-axes[0].set_ylabel('Distance (cm)', fontsize=16)
-ymin = df_validation['Distance (cm)'].min() - 15
-ymax = df_validation['Distance (cm)'].max() + 15
-for ax in axes:
-    ax.set_ylim(ymin, ymax)
-
-# big title + clean legend for baseline & outlier symbol
-fig.suptitle('Hardware Robustness of Champion Gaits', fontsize=26, weight='bold')
-from matplotlib.lines import Line2D
+# --- Add a global title and a unified legend ---
+fig.suptitle('Hardware Robustness of Champion Gaits', fontsize=22, weight='bold', y=0.95)
 legend_handles = [
-    Line2D([], [], color=PALETTE['Baseline'], lw=2, ls='--', label='Manual Baseline (217 cm)'),
-    Line2D([], [], marker='D', color='black', markerfacecolor='white', lw=0,
-           label='Outlier (1.5×IQR)')
+    Line2D([0], [0], linestyle='--', color=PALETTE['Baseline'], lw=2, label='Manual Baseline (217 cm)'),
+    Line2D([0], [0], marker='D', color='w', markerfacecolor='black', markersize=8, linestyle='None', label='Outlier (1.5×IQR)')
 ]
-fig.legend(handles=legend_handles, loc='lower center', ncol=2, frameon=False)
-plt.tight_layout(rect=[0, 0.06, 1, 0.94])
+fig.legend(handles=legend_handles, ncol=2, frameon=True, loc='lower center', bbox_to_anchor=(0.5, 0))
+plt.tight_layout(rect=[0, 0.05, 1, 0.95])
 plt.show()
 
 
@@ -469,7 +481,7 @@ plt.plot(param_cols, medians.loc['CMA-ES'].values, color=PALETTE['CMA-ES'], line
 # Baseline dashed
 plt.plot(param_cols, baseline_norm, color=PALETTE['Baseline'], linewidth=3, linestyle='--', marker='s', label='Manual Baseline', zorder=7)
 
-plt.title('Strategy Fingerprint of High-Performing Gaits', fontsize=20, weight='bold')
+plt.title('Parameter Strategies of High-Performing Gaits', fontsize=20, weight='bold')
 plt.ylabel('Normalized Parameter Value (0 = Min, 1 = Max)', fontsize=16)
 plt.ylim(-0.05, 1.05)
 plt.grid(True, alpha=0.4)
@@ -522,7 +534,8 @@ plt.ylim(0, max_y)
 plt.tight_layout()
 plt.show()
 
-# ---------- Plot 6 (Optional): Failure Heatmap (amp_push × swing_time) ----------
+
+# ---------- Plot 6 (Optional): Failure Heatmap ----------
 print("\n--- Generating Optional 2D Failure Heatmap ---")
 df_heat = all_trials_raw.copy()
 df_heat['is_failure'] = (pd.to_numeric(df_heat.get('Score', np.nan), errors='coerce') == 1000).astype(int)
@@ -553,6 +566,10 @@ ax = sns.heatmap(
     linewidths=0.5, linecolor='white'
 )
 
+
+ax.grid(False)
+
+
 # Grey out n<3
 for (i, j), val in np.ndenumerate(insufficient.T.values):
     if val:
@@ -570,5 +587,4 @@ ax.set_yticklabels(midpoints(amp_bins), rotation=0)
 plt.title('Failure Rate by amp_push vs. swing_time', fontsize=20, weight='bold')
 plt.tight_layout()
 plt.show()
-
 print("\nAnalysis complete.")
