@@ -272,23 +272,107 @@ print("\n" + "=" * 80)
 print("GENERATING THE FINAL PLOTS")
 print("=" * 80)
 
-# ---------- Plot 1: Learning Curves ----------
-plt.figure(figsize=(12, 8))
-ax = sns.lineplot(
-    data=all_runs, x='Trial', y='Best So Far', hue='Algorithm',
-    estimator='median', errorbar=('ci', 95), linewidth=2.5,
-    palette=PALETTE, err_kws={'alpha': 0.25}
+# =========================
+# Plot 1.1 & 1.2 — Single-panel efficiency plots
+# =========================
+from matplotlib.lines import Line2D
+from matplotlib.patches import Patch
+
+def efficiency_single_plot(algo_name, color, panel_title, outfile):
+    sub = all_runs.query("Algorithm == @algo_name").copy()
+    grp = sub.groupby('Trial')['Best So Far']
+    med = grp.median()
+    lo  = grp.min()
+    hi  = grp.max()
+
+    fig, ax = plt.subplots(figsize=(9, 7))
+    fig.suptitle(panel_title, fontsize=20, fontweight='bold', y=0.98)
+
+    # Individual runs (thin) with inline labels R1/R2/R3
+    for rid, r in sub.groupby('Run ID'):
+        ax.plot(
+            r['Trial'], r['Best So Far'],
+            drawstyle='steps-post',
+            color=color, alpha=0.38, lw=1.4, zorder=1, label='_nolegend_'
+        )
+        # inline label near last point
+        x_last = r['Trial'].iloc[-1]
+        y_last = r['Best So Far'].iloc[-1]
+        ax.text(
+            x_last - 0.8, y_last, f'R{rid}',
+            fontsize=10, ha='right', va='center',
+            color=color, alpha=0.9, zorder=4
+        )
+
+    # Min–max envelope (full range across runs)
+    ax.fill_between(
+        med.index, lo.values, hi.values,
+        step='post', color=color, alpha=0.18,
+        linewidth=0, zorder=1, label='_nolegend_'
+    )
+
+    # Median curve (thick)
+    ax.plot(
+        med.index, med.values,
+        drawstyle='steps-post',
+        color=color, lw=3.0, zorder=3, label='_nolegend_'
+    )
+
+    # Baseline
+    ax.axhline(217.0, color=PALETTE['Baseline'], ls='--', lw=2, zorder=0)
+
+    # Axes cosmetics
+    ax.set_xlim(1, int(med.index.max()))
+    ypad = max(10.0, 0.05 * float(hi.max()))
+    ax.set_ylim(bottom=0, top=float(hi.max()) + ypad)
+    ax.grid(True, which='both', linestyle='--', alpha=0.35)
+    ax.set_xlabel('Trial Number', fontsize=14)
+    ax.set_ylabel('Best-so-far Distance (cm)', fontsize=14)
+
+    # Subtle backdrop: lighten spines
+    for spine in ['top','right','left','bottom']:
+        ax.spines[spine].set_alpha(0.3)
+
+    # Custom legend with your preferred placement
+    legend_handles = [
+        Line2D([0],[0], color=color, lw=3, label=f'{algo_name} median'),
+        Patch(facecolor=color, alpha=0.18, label='Min–max range across runs'),
+        Line2D([0],[0], color=color, lw=1.4, alpha=0.6, label='Individual runs'),
+        Line2D([0],[0], color=PALETTE['Baseline'], lw=2, ls='--', label='Manual Baseline'),
+    ]
+    ax.legend(
+        handles=legend_handles,
+        title='Algorithm',
+        loc='center',
+        bbox_to_anchor=(0.49, 0.20),
+        frameon=True
+    )
+
+    plt.tight_layout(rect=(0, 0, 1, 0.96))
+
+    # ===== Save BEFORE showing =====
+    fig.savefig(outfile, dpi=300, bbox_inches='tight')
+
+    plt.show()
+
+
+# ---- Plot 1.1 (BO) ----
+efficiency_single_plot(
+    'BO', PALETTE['BO'],
+    'Plot 1.1 — Optimization Efficiency (BO)',
+    'plot_1_1_efficiency_BO.png'
 )
-plt.axhline(y=217.0, color=PALETTE['Baseline'], linestyle='--', linewidth=2, label='Manual Baseline')
-plt.title('Optimization Efficiency', fontsize=20, weight='bold')
-plt.xlabel('Trial Number', fontsize=16)
-plt.ylabel('Median Best Distance Found (cm)', fontsize=16)
-plt.text(0.985, 0.02, 'CMA-ES truncated to 48 trials for fairness',
-         ha='right', va='bottom', transform=ax.transAxes, fontsize=10, style='italic')
-ax.legend(title='Algorithm', loc='center', bbox_to_anchor=(0.49, 0.20), frameon=True)
-plt.grid(True, which='both', linestyle='--', alpha=0.4)
-plt.tight_layout()
-plt.show()
+
+# ---- Plot 1.2 (CMA-ES) ----
+# If you truncated CMA-ES to 48 trials when building all_runs, it will carry through here.
+efficiency_single_plot(
+    'CMA-ES', PALETTE['CMA-ES'],
+    'Plot 1.2 — Optimization Efficiency (CMA-ES)',
+    'plot_1_2_efficiency_CMAES.png'
+)
+
+
+
 
 # ---------- Plot 2: Corner Plot (Parameter Space Exploration) ----------
 # Prepare data + quantiles
