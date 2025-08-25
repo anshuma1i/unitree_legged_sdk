@@ -1,0 +1,4 @@
+Gait Type,Key Parameter Signature,Physical Description,Champions
+Aggressive Sprinter,"amp_push=MAX, push_ratio=MIN, swing_time=FAST","High-frequency, powerful, explosive kicks.","BO Run 1, BO Run 2, CMA-ES Run 3"
+Power Lope,"amp_push=MAX, push_ratio=MIN, swing_time=MAX","Low-frequency, powerful bounds or leaps.",BO Run 3
+Sub-optimal,amp_push=MODERATE,Incomplete strategies with weaker pushes.,"CMA-ES Run 1, CMA-ES Run 2"
