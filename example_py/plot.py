@@ -409,7 +409,7 @@ parameter_space_exploration_single(
 
 
 # ==============================================================================
-# Plot 3 : Hardware Robustness of Champion Gaits (shared y, start at 250, no baseline, no saving)
+# Plot 3 : Hardware Robustness of Champion Gaits 
 # ==============================================================================
 fig, axes = plt.subplots(1, 2, figsize=(12, 8), sharey=True)
 
@@ -482,16 +482,16 @@ plt.tight_layout(rect=[0, 0.05, 1, 0.95])
 # ==============================================================================
 # Plot 4: Strategy Fingerprint (Parallel Coordinates)
 # ==============================================================================
-param_labels = {
-    'tau_boost':  'tau_boost (Nm)',
-    'z_offset':   'z_offset (rad)',
-    'amp_push':   'amp_push (rad)',
-    'push_ratio': 'push_ratio (–)',
-    'swing_time': 'swing_time (s)',
-}
-plot_para = all_trials_raw.dropna(subset=param_cols + ['Distance (cm)']).copy()
-for p, lim in param_ranges.items():
-    plot_para[p] = (plot_para[p] - lim[0]) / (lim[1] - lim[0])
+# param_labels = {
+#     'tau_boost':  'tau_boost (Nm)',
+#     'z_offset':   'z_offset (rad)',
+#     'amp_push':   'amp_push (rad)',
+#     'push_ratio': 'push_ratio (–)',
+#     'swing_time': 'swing_time (s)',
+# }
+# plot_para = all_trials_raw.dropna(subset=param_cols + ['Distance (cm)']).copy()
+# for p, lim in param_ranges.items():
+#     plot_para[p] = (plot_para[p] - lim[0]) / (lim[1] - lim[0])
 
 # ==============================================================================
 # Plot 4: Strategy Fingerprint (Parallel Coordinates)

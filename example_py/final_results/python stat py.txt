@@ -1,0 +1,38 @@
+python stat.py
+
+================================================================================
+PERFORMANCE TESTS (Champion means: 3 BO vs 3 CMA-ES)
+================================================================================
+
+Champion means (cm):
+  BO   : [431.4 442.2 420.2]  -> mean=431.3
+  CMA-ES: [286.8 350.2 395. ]  -> mean=344.0
+
+[1] Mann–Whitney U (one-sided, BO > CMA-ES)
+    U = 9.0, p = 0.0500
+
+[2] Exact permutation test on mean difference (BO − CMA-ES)
+    Observed mean diff = 87.27 cm
+    p (one-sided, ≥obs) = 0.0500
+    p (two-sided, |diff|≥|obs|) = 0.1000
+
+[3] Mean difference (BO − CMA-ES)
+    87.27 cm  (bootstrap 95% CI for diff: [39.87, 140.87] cm)
+
+[4] 95% bootstrap CIs for champion mean (per algorithm)
+    BO mean   95% CI: [420.20, 442.20] cm
+    CMA-ES mean 95% CI: [286.80, 395.00] cm
+
+================================================================================
+EFFICIENCY TEST (Single runs: BO_1 vs CMA-ES_1)
+================================================================================
+
+[5] Mann–Whitney U on per-trial best-so-far (one-sided, BO > CMA-ES)
+    Trials compared: 50 × 50 pairs
+    U = 2236.0, p = 0.000000
+    Interpretation (U/(n*n)): Prob(BO > CMA-ES at a random trial) ≈ 89.4%
+
+Done.
+
+
+
